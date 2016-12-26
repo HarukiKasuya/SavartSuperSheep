@@ -18,7 +18,7 @@ SavartSuperSheep‚ÍA”CˆÓ‚ÌŒ`‚ÌƒRƒCƒ‹‚Ì¥êŒvZ‚Æ•`Ê‚ğ‘S‚Ägnuplotã‚Ås‚¤ƒRƒ}ƒ“ƒ
 
 
 }
-Ename_image1     :xy•½–Ê‚Å‚Ì¥ê•ª•z
-Ename_image2     :xz•½–Ê‚Å‚Ì¥ê•ª•z
+Ename_image1     :xz•½–Ê‚Å‚Ì¥ê•ª•z
+Ename_image2     :xy•½–Ê‚Å‚Ì¥ê•ª•z
 Ename_danmen     :x²‚É‰ˆ‚Á‚½¥ê
 Ename_int        :ˆÊ‘ŠƒVƒtƒg
