@@ -11,7 +11,7 @@ SavartSuperSheep‚ÍA”CˆÓ‚ÌŒ`‚ÌƒRƒCƒ‹‚Ì¥êŒvZ‚Æ•`Ê‚ğ‘S‚Ägnuplotã‚Ås‚¤ƒRƒ}ƒ“ƒ
 è‡
 1.ƒRƒCƒ‹‚Ì’¸“_‚Ì(x,y)À•W‚©‚ç‚È‚éƒeƒLƒXƒgƒtƒ@ƒCƒ‹‚ğì¬‚µA"D‚«‚È–¼‘O_position.txt"‚Ì–¼‘O‚Å•Û‘¶‚µ‚Ü‚·B
 2.Setup.txt‚ğã‚Åì‚Á‚½positionƒtƒ@ƒCƒ‹‚ÌƒfƒBƒŒƒNƒgƒŠ‚ÉƒRƒs[‚µ‚ÄŠJ‚«AARG1="ã‚ÅŒˆ‚ß‚½–¼‘O"‚Æ‚µA’è”‚ğ“K“–‚È’l‚É‚µ‚Ü‚·B
-3.Biot.txt,Savart.txt,Sarvart.txt,Sheep.txt‚ğã‚Åì‚Á‚½ƒfƒBƒŒƒNƒgƒŠ‚ÉƒRƒs[‚µA•K—v‚È‚ç‘‚«Š·‚¦‚Ü‚·B
+3.Biot.txt,Savart.txt,Sheep.txt‚ğã‚Åì‚Á‚½ƒfƒBƒŒƒNƒgƒŠ‚ÉƒRƒs[‚µA•K—v‚È‚ç‘‚«Š·‚¦‚Ü‚·B
 4.ã‚Åì‚Á‚½ƒfƒBƒŒƒNƒgƒŠ‚ÉˆÚ“®‚µ‚Ägnuplot‚ğŠJ‚«AloadƒRƒ}ƒ“ƒh‚ÅSetup.txt,Biot.txt‚ğ“Ç‚İ‚ñ‚¾Œã(Œx‚ªo‚é‚ª‹C‚É‚µ‚È‚¢)AÀs‚µ‚½‚¢ƒRƒ}ƒ“ƒhƒtƒ@ƒCƒ‹(Savart.txt,Sheep.txt)‚ğ“Ç‚İ‚İ‚Ü‚·B
 5.gnuplot‚ğI—¹‚µ‚Ü‚·B
 *–l‚Ìƒm[ƒgPC‚Å‚Ìsample‚Ì³•ûŒ`ƒRƒCƒ‹‚É‘Î‚·‚éŒvZŠÔ‚ÍASavart‚ª4•ªASheep‚ª4•ª’ö“x‚Å‚µ‚½B
