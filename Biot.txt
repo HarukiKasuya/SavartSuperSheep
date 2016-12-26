@@ -1,0 +1,25 @@
+#positionÇÃì«Ç›éÊÇË
+stats txt_position nooutput
+N=int(STATS_records-1)
+do for[i=0:N]{
+stats txt_position using 1:2 every ::i::i name sprintf("S%i",i) nooutput
+}
+
+#é•èÍ
+l(x1,y1,z1,x2,y2,z2)=sqrt((x1-x2)**2+(y1-y2)**2+(z1-z2)**2)
+
+theta1(x,y,z,x1,y1,z1,x2,y2,z2)=acos((l(x1,y1,z1,x2,y2,z2)**2+l(x,y,z,x1,y1,z1)**2-l(x,y,z,x2,y2,z2)**2)/(2*l(x1,y1,z1,x2,y2,z2)*l(x,y,z,x1,y1,z1)))
+theta2(x,y,z,x1,y1,z1,x2,y2,z2)=acos(-(l(x1,y1,z1,x2,y2,z2)**2+l(x,y,z,x2,y2,z2)**2-l(x,y,z,x1,y1,z1)**2)/(2*l(x1,y1,z1,x2,y2,z2)*l(x,y,z,x2,y2,z2)))
+d(x,y,z,x1,y1,z1,x2,y2,z2)=l(x,y,z,x1,y1,z1)*sin(theta1(x,y,z,x1,y1,z1,x2,y2,z2))
+
+px(x,y,z,x1,y1,z1,x2,y2,z2)=((y2-y1)*(z-z1)-(z2-z1)*(y-y1))/(l(x1,y1,z1,x2,y2,z2)*d(x,y,z,x1,y1,z1,x2,y2,z2))
+py(x,y,z,x1,y1,z1,x2,y2,z2)=((z2-z1)*(x-x1)-(x2-x1)*(z-z1))/(l(x1,y1,z1,x2,y2,z2)*d(x,y,z,x1,y1,z1,x2,y2,z2))
+pz(x,y,z,x1,y1,z1,x2,y2,z2)=((x2-x1)*(y-y1)-(y2-y1)*(x-x1))/(l(x1,y1,z1,x2,y2,z2)*d(x,y,z,x1,y1,z1,x2,y2,z2))
+
+B1(x,y,z,x1,y1,z1,x2,y2,z2)=(mu*I/(4*pi*d(x,y,z,x1,y1,z1,x2,y2,z2)))*(cos(theta1(x,y,z,x1,y1,z1,x2,y2,z2))-cos(theta2(x,y,z,x1,y1,z1,x2,y2,z2)))*10**4
+
+Bx(x,y,z)=sum [i=0:N-1] sum[j=1:maki] (B1(x,y,z,value(sprintf("S%i_max_x",i))*10**(-2),value(sprintf("S%i_max_y",i))*10**(-2),(poz+0.1*j)*10**(-2),value(sprintf("S%i_max_x",i+1))*10**(-2),value(sprintf("S%i_max_y",i+1))*10**(-2),(poz+0.1*j)*10**(-2))*px(x,y,z,value(sprintf("S%i_max_x",i))*10**(-2),value(sprintf("S%i_max_y",i))*10**(-2),(poz+0.1*j)*10**(-2),value(sprintf("S%i_max_x",i+1))*10**(-2),value(sprintf("S%i_max_y",i+1))*10**(-2),(poz+0.1*j)*10**(-2))+B1(x,y,z,value(sprintf("S%i_max_x",i))*10**(-2),value(sprintf("S%i_max_y",i))*10**(-2),-(poz+0.1*j)*10**(-2),value(sprintf("S%i_max_x",i+1))*10**(-2),value(sprintf("S%i_max_y",i+1))*10**(-2),-(poz+0.1*j)*10**(-2))*px(x,y,z,value(sprintf("S%i_max_x",i))*10**(-2),value(sprintf("S%i_max_y",i))*10**(-2),-(poz+0.1*j)*10**(-2),value(sprintf("S%i_max_x",i+1))*10**(-2),value(sprintf("S%i_max_y",i+1))*10**(-2),-(poz+0.1*j)*10**(-2)))
+By(x,y,z)=sum [i=0:N-1] sum[j=1:maki] (B1(x,y,z,value(sprintf("S%i_max_x",i))*10**(-2),value(sprintf("S%i_max_y",i))*10**(-2),(poz+0.1*j)*10**(-2),value(sprintf("S%i_max_x",i+1))*10**(-2),value(sprintf("S%i_max_y",i+1))*10**(-2),(poz+0.1*j)*10**(-2))*py(x,y,z,value(sprintf("S%i_max_x",i))*10**(-2),value(sprintf("S%i_max_y",i))*10**(-2),(poz+0.1*j)*10**(-2),value(sprintf("S%i_max_x",i+1))*10**(-2),value(sprintf("S%i_max_y",i+1))*10**(-2),(poz+0.1*j)*10**(-2))+B1(x,y,z,value(sprintf("S%i_max_x",i))*10**(-2),value(sprintf("S%i_max_y",i))*10**(-2),-(poz+0.1*j)*10**(-2),value(sprintf("S%i_max_x",i+1))*10**(-2),value(sprintf("S%i_max_y",i+1))*10**(-2),-(poz+0.1*j)*10**(-2))*py(x,y,z,value(sprintf("S%i_max_x",i))*10**(-2),value(sprintf("S%i_max_y",i))*10**(-2),-(poz+0.1*j)*10**(-2),value(sprintf("S%i_max_x",i+1))*10**(-2),value(sprintf("S%i_max_y",i+1))*10**(-2),-(poz+0.1*j)*10**(-2)))
+Bz(x,y,z)=sum [i=0:N-1] sum[j=1:maki] (B1(x,y,z,value(sprintf("S%i_max_x",i))*10**(-2),value(sprintf("S%i_max_y",i))*10**(-2),(poz+0.1*j)*10**(-2),value(sprintf("S%i_max_x",i+1))*10**(-2),value(sprintf("S%i_max_y",i+1))*10**(-2),(poz+0.1*j)*10**(-2))*pz(x,y,z,value(sprintf("S%i_max_x",i))*10**(-2),value(sprintf("S%i_max_y",i))*10**(-2),(poz+0.1*j)*10**(-2),value(sprintf("S%i_max_x",i+1))*10**(-2),value(sprintf("S%i_max_y",i+1))*10**(-2),(poz+0.1*j)*10**(-2))+B1(x,y,z,value(sprintf("S%i_max_x",i))*10**(-2),value(sprintf("S%i_max_y",i))*10**(-2),-(poz+0.1*j)*10**(-2),value(sprintf("S%i_max_x",i+1))*10**(-2),value(sprintf("S%i_max_y",i+1))*10**(-2),-(poz+0.1*j)*10**(-2))*pz(x,y,z,value(sprintf("S%i_max_x",i))*10**(-2),value(sprintf("S%i_max_y",i))*10**(-2),-(poz+0.1*j)*10**(-2),value(sprintf("S%i_max_x",i+1))*10**(-2),value(sprintf("S%i_max_y",i+1))*10**(-2),-(poz+0.1*j)*10**(-2)))
+
+B(x,y,z)=sqrt(Bx(x,y,z)**2+By(x,y,z)**2+Bz(x,y,z)**2)

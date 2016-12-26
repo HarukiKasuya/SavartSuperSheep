@@ -1,0 +1,34 @@
+#名前
+ARG1="sample"
+
+#定数
+mu=4*pi*10**(-7) #[N/A^2] 透磁率
+I=4 #[A] 電流
+xm=0.2 #[m] xレンジの最大値(x=[-xm:xm]の範囲で描写する)
+zm=0.2 #[m] zレンジの最大値(z=[-zm:zm]の範囲で描写する)
+Bm=8 #[G] 磁場の大きさのレンジの最大値
+dB=1 #[G] 磁場等高線の間隔
+maki=20 #コイルの巻き数
+poz=4.55 #[cm] コイルのz座標の最小値
+delta=0.01 #[m] 断面図のずれ
+hbar=1.054*10**(-34) #[J*s] プランク定数/2π
+v=2200 #[m/s] 中性子の速度
+mu_n=0.966*10**(-26) #[J/T] 中性子の磁気モーメント
+
+#ファイル名指定
+txt_position=sprintf("%s_position.txt",ARG1)
+txt_position2=sprintf("%s_position2.txt",ARG1)
+table_vector1=sprintf("%s_vector1.table",ARG1)
+table_vector2=sprintf("%s_vector2.table",ARG1)
+table_image1=sprintf("%s_image1.table",ARG1)
+table_image2=sprintf("%s_image2.table",ARG1)
+table_contour1=sprintf("%s_contour1.table",ARG1)
+table_contour2=sprintf("%s_contour2.table",ARG1)
+table_int1=sprintf("%s_int1.table",ARG1)
+table_int2=sprintf("%s_int2.table",ARG1)
+pdf_image1=sprintf("%s_image1.pdf",ARG1)
+pdf_image2=sprintf("%s_image2.pdf",ARG1)
+pdf_danmen1=sprintf("%s_danmen1.pdf",ARG1)
+pdf_danmen2=sprintf("%s_danmen2.pdf",ARG1)
+pdf_danmen3=sprintf("%s_danmen3.pdf",ARG1)
+pdf_int=sprintf("%s_int.pdf",ARG1)

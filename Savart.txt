@@ -1,0 +1,63 @@
+#vector tableçÏê¨
+set xr[-xm:xm]
+set yr[-zm:zm]
+set samples 10
+set isosamples 10
+set table table_vector1
+plot "++" using 1:2:(Bx($1,0,$2)*5*10**(-3)):(Bz($1,0,$2)*5*10**(-3)) with vectors
+set table table_vector2
+plot "++" using 1:2:(Bx($1,$2,0)*5*10**(-3)):(By($1,$2,0)*5*10**(-3)) with vectors
+unset table
+unset samples
+unset isosamples
+
+#image tableçÏê¨
+set isosamples 30
+set table table_image1
+splot B(x,0,y)
+set table table_image2
+splot B(x,y,0)
+unset table
+
+#ìôçÇê¸tableçÏê¨
+set contour base
+set cntrparam levels incremental 0,dB,Bm
+unset surface
+set table table_contour1
+splot table_image1
+set table table_contour2
+splot table_image2
+unset table
+
+#ï`é 
+reset
+set xr[-xm:xm]
+set yr[-zm:zm]
+set palette rgbformulae 33,13,10
+set cbrange[0:Bm]
+unset key
+set xlabel "x[m]"
+set ylabel "z[m]"
+set cblabel "B[G]"
+set terminal pdf size 6in,5in
+set output pdf_image1
+plot table_image1 with image, table_contour1 w l lc rgb "white" lw 1, table_vector1 with vector lc rgb "white" lw 1#, txt_position2 using ($1*10**(-2)):($2*10**(-2)) w p pt 7 lc -1 ps 0.1
+set yr[-xm:xm]
+set ylabel "y[m]"
+set output pdf_image2
+plot table_image2 with image, table_contour2 w l lc rgb "white" lw 1, table_vector2 with vector lc rgb "white" lw 1, txt_position u ($1*10**(-2)):($2*10**(-2)) w l lc -1 lw 2
+
+#danmen ï`é 
+reset
+set xr[-xm:xm]
+set yr[-2:Bm]
+set zeroaxis
+set xlabel "x[m]"
+set ylabel "B[G]"
+set terminal pdf size 6in,4in enhanced
+set output pdf_danmen1
+plot Bx(x,0,0) w l title "Bx(x,0,0)" lc rgb "red", By(x,0,0) w l title "By(x,0,0)" lc rgb "green", Bz(x,0,0) w l title "Bz(x,0,0)" lc rgb "blue"
+#set output pdf_danmen2
+#plot Bx(x,delta,0) w l title "Bx(x,{/Symbol d},0)" lc rgb "red", By(x,delta,0) w l title "By(x,{/Symbol d},0)" lc rgb "green", Bz(x,delta,0) w l title "Bz(x,{/Symbol d},0)" lc rgb "blue"
+#set output pdf_danmen3
+#plot Bx(x,0,delta) w l title "Bx(x,0,{/Symbol d})" lc rgb "red", By(x,0,delta) w l title "By(x,0,{/Symbol d})" lc rgb "green", Bz(x,0,delta) w l title "Bz(x,0,{/Symbol d})" lc rgb "blue"

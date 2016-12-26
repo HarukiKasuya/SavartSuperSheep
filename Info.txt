@@ -1,0 +1,24 @@
+SavartSuperSheepは、任意の形のコイルの磁場計算と描写を、全てgnuplot上で行うコマンドファイルです。
+デフォルトではヘルムホルツ型のコイルで計算します。
+
+役割
+・Setup　　　　:設定
+・Biot　　　　 :positionファイルの読み取りと関数定義
+・Savart       :磁場分布の計算と描写
+・Sheep        :位相シフトの計算と描写
+
+
+手順
+1.コイルの頂点の(x,y)座標からなるテキストファイルを作成し、"好きな名前_position.txt"の名前で保存します。
+2.Setup.txtを上で作ったpositionファイルのディレクトリにコピーして開き、ARG1="上で決めた名前"とし、定数を適当な値にします。
+3.Bio.txt,Savart.txt,Seep.txtを上で作ったディレクトリにコピーし、必要なら書き換えます。
+4.上で作ったディレクトリに移動してgnuplotを開き、loadコマンドでSetup.txt,Bio.txtを読み込んだ後(警告が出るが気にしない)、実行したいコマンドファイル(Savart.txt,Seep.txt)を読み込みます。
+5.gnuplotを終了します。
+*僕のノートPCでのsampleの正方形コイルに対する計算時間は、Savartが4分、Sheepが1分程度でした。
+
+
+図
+・name_image1     :xy平面での磁場分布
+・name_image2     :xz平面での磁場分布
+・name_danmen     :x軸に沿った磁場
+・name_int        :位相シフト

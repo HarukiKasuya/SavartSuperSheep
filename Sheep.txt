@@ -1,0 +1,22 @@
+#Ï•ª
+n=100
+int_delta(x1,x2,y,z)=(Bz(x1,y,z)+Bz(x2,y,z))*(x2-x1)/2
+integ(x1,x2,y,z)=sum [i=1:n] int_delta(x1+(x2-x1)*(i-1)/n,x1+(x2-x1)*i/n,y,z)
+
+#int tableì¬
+reset
+set xr[-3:3]
+set table table_int1
+plot ((2*mu_n)/(hbar*v))*integ(-0.2,0.2,x*10**(-2),0)*10**(-4)*180/pi
+set table table_int2
+plot ((2*mu_n)/(hbar*v))*integ(-0.2,0.2,0,x*10**(-2))*10**(-4)*180/pi
+unset table
+
+#•`Ê
+set xlabel "‚¸‚ê[cm]"
+set ylabel "ƒÆ[‹]"
+set xr[-3:3]
+set yr[529:537]
+set terminal pdf
+set output pdf_int
+plot table_int1 w l lc rgb "red" title "y•ûŒü‚¸‚ê",table_int2 w l lc rgb "blue" title "z•ûŒü‚¸‚ê"
